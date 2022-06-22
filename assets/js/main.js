@@ -1,4 +1,22 @@
 $(document).ready(function() {
+	/* Fungsi formatRupiah */
+	function formatRupiah(angka, prefix='Rp. '){
+		var number_string = angka.replace(/[^,\d]/g, '').toString(),
+		split   		= number_string.split(','),
+		sisa     		= split[0].length % 3,
+		rupiah     		= split[0].substr(0, sisa),
+		ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+	
+		// tambahkan titik jika yang di input sudah menjadi angka ribuan
+		if(ribuan){
+			separator = sisa ? '.' : '';
+			rupiah += separator + ribuan.join('.');
+		}
+	
+		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+		return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+	}
+
     let sendAjax = function(url, formData, type = 'POST') {
         let dataReturn = [];
         $.ajax({
@@ -104,6 +122,7 @@ $(document).ready(function() {
             <tr id="divisi-${dataReturn.id_divisi}">
                 <td>${rowCount}</td>
                 <td class="nama-divisi">${dataReturn.nama_divisi}</td>
+                <td class="gaji-divisi">${formatRupiah(dataReturn.gaji_divisi)}</td>
                 <td>
                     <a href="#" class="btn btn-primary btn-sm btn-edit-divisi" data-toggle="modal" data-target="#modal-edit-divisi" data-divisi="${btoa(JSON.stringify(dataReturn))}"><i class="fa fa-edit"></i> Edit</a> 
                     <a href="${BASEURL + 'divisi/destroy/' + dataReturn.id_divisi}" class="btn btn-danger btn-sm btn-delete ml-2" onclick="return false"><i class="fa fa-trash"></i> Hapus</a>
@@ -119,9 +138,10 @@ $(document).ready(function() {
         console.log($(this).attr('data-divisi'));
         console.log(dataEncode);
         let dataDivisi = $.parseJSON(dataEncode);
-
+		console.log(dataDivisi);
         $('#edit-id-divisi').val(dataDivisi.id_divisi);
         $('#edit-nama-divisi').val(dataDivisi.nama_divisi);
+        $('#edit-gaji-divisi').val(dataDivisi.gaji_divisi);
     });
 
     $('#form-edit-divisi').submit(function() {
@@ -133,6 +153,7 @@ $(document).ready(function() {
         console.log(dataReturn);
         let targetParent = $('tr#divisi-' + dataReturn.id_divisi);
         targetParent.find('.nama-divisi').text(dataReturn.nama_divisi);
+        targetParent.find('.gaji-divisi').text(formatRupiah(dataReturn.gaji_divisi));
         $('#modal-edit-divisi').modal('hide');
     });
 
