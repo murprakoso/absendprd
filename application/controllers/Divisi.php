@@ -7,7 +7,7 @@ class Divisi extends CI_Controller
 	{
 		parent::__construct();
 		is_login();
-		redirect_if_level_not('Manager');
+		redirect_if_level_not(['Manager', 'UmumKeuangan']);
 		$this->load->model('Divisi_model', 'divisi');
 		$this->load->helper('currency_helper');
 	}

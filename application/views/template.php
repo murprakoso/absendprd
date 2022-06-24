@@ -35,7 +35,7 @@
             -->
 			<div class="sidebar-wrapper">
 				<div class="logo">
-					<a href="https://instagram/ravick_new/" class="simple-text">
+					<a href="#" class="simple-text">
 						<img src="<?= base_url('assets/img/oviagra-com.png') ?>" alt="" class="img-fluid">
 					</a>
 				</div>
@@ -51,12 +51,6 @@
 							<p>Dashboard</p>
 						</a>
 					</li>
-					<!-- <li class="nav-item <?= @$_active ?>">
-						<a class="nav-link" href="<?= base_url('surat') ?>">
-							<i class="nc-icon nc-paper-2"></i>
-							<p>Surat Cuti</p>
-						</a>
-					</li> -->
 					<li class="nav-item <?= @$_active ?>">
 						<a class="nav-link" href="<?= base_url('user') ?>">
 							<i class="nc-icon nc-circle-09"></i>
@@ -82,6 +76,20 @@
 								<p>Karyawan</p>
 							</a>
 						</li>
+						<li class="nav-item <?= @$_active ?>">
+							<a class="nav-link" href="<?= base_url('penggajian') ?>">
+								<i class="nc-icon nc-bullet-list-67"></i>
+								<p>Penggajian</p>
+							</a>
+						</li>
+						<li class="nav-item <?= @$_active ?>">
+							<a class="nav-link" href="<?= base_url('absensi') ?>">
+								<i class="nc-icon nc-notes"></i>
+								<p>Absensi</p>
+							</a>
+						</li>
+
+					<?php elseif (is_level('UmumKeuangan')) : ?>
 						<li class="nav-item <?= @$_active ?>">
 							<a class="nav-link" href="<?= base_url('penggajian') ?>">
 								<i class="nc-icon nc-bullet-list-67"></i>
@@ -154,7 +162,7 @@
 				<div class="container">
 					<nav>
 						<p class="copyright text-center">
-							&copy; @2022 ravickcopyright</a>
+							&copy; @2022 hetycopyright</a>
 						</p>
 					</nav>
 				</div>
