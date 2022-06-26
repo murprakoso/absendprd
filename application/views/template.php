@@ -17,7 +17,7 @@
 	<link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet" />
 	<link href="<?= base_url('assets/css/light-bootstrap-dashboard.css?v=2.0.1') ?>" rel="stylesheet" />
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="<?= base_url('assets/css/demo.css') ?>" rel="stylesheet" />
+	<!-- <link href="<?= base_url('assets/css/demo.css') ?>" rel="stylesheet" /> -->
 
 	<script>
 		var BASEURL = '<?= base_url() ?>';
@@ -27,7 +27,7 @@
 
 <body>
 	<div class="wrapper">
-		<div class="sidebar" data-image="../assets/img/sidebar-5.jpg" data-color="blue">
+		<div class="sidebar" data-color="blue">
 			<!--
                 Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -122,6 +122,13 @@
 							</a>
 						</li>
 					<?php endif; ?>
+
+					<li class="nav-item <?= @$_active ?>">
+						<a class="nav-link" href="<?= base_url('surat') ?>">
+							<i class="nc-icon nc-paper-2"></i>
+							<p>Surat</p>
+						</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= base_url('dashboard/logout') ?>">
 							<span>Log out <i class="nc-icon nc-button-power"></i></span>
@@ -188,6 +195,15 @@
 
 <!-- Main Js -->
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
+
+<!-- Sweetalert delete Js -->
+<script src="<?= base_url('assets/js/delete.js') ?>"></script>
+
+<?php if (@is_array($js_to_load)) { ?>
+	<?php foreach ($js_to_load as $row) : ?>
+		<script src="<?= base_url('assets/js/' . $row); ?>"></script>
+	<?php endforeach; ?>
+<?php } ?>
 
 <!-- Custom Script -->
 <script>
