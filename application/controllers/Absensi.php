@@ -50,8 +50,6 @@ class Absensi extends CI_Controller
 			$absen_harian = $this->absensi->absen_harian_user($this->session->id_user)->num_rows();
 			$keterangan = ($absen_harian < 2 && $absen_harian < 1) ? 'Masuk' : 'Pulang';
 		}
-		// var_dump(@$this->uri->segment(3));
-		// die;
 
 		$data = [
 			'tgl' => date('Y-m-d'),

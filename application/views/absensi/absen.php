@@ -20,10 +20,18 @@
 								<td><i class="fa fa-3x fa-<?= ($absen < 2) ? "warning text-warning" : "check-circle-o text-success" ?>"></i></td>
 								<td><?= tgl_hari(date('d-m-Y')) ?></td>
 								<td>
-									<a href="<?= base_url('absensi/absen/masuk') ?>" class="btn btn-primary btn-sm btn-fill" <?= ($absen == 1) ? 'disabled style="cursor:not-allowed"' : '' ?>>Absen Masuk</a>
+									<?php if ($absen == 1 || $absen == 2) : ?>
+										<a href="javascript:;" class="btn btn-primary btn-sm btn-fill" disabled style="cursor: not-allowed;">Absen Masuk</a>
+									<?php else : ?>
+										<a href="<?= base_url('absensi/absen/masuk') ?>" class="btn btn-primary btn-sm btn-fill">Absen Masuk</a>
+									<?php endif; ?>
 								</td>
 								<td>
-									<a href="<?= base_url('absensi/absen/pulang') ?>" class="btn btn-success btn-sm btn-fill" <?= ($absen !== 1 || $absen == 2) ? 'disabled style="cursor:not-allowed"' : '' ?>>Absen Pulang</a>
+									<?php if ($absen !== 1 || $absen == 2) : ?>
+										<a href="javascript:;" class="btn btn-success btn-sm btn-fill" disabled style="cursor: not-allowed;">Absen Pulang</a>
+									<?php else : ?>
+										<a href="<?= base_url('absensi/absen/pulang') ?>" class="btn btn-success btn-sm btn-fill">Absen Pulang</a>
+									<?php endif; ?>
 								</td>
 							<?php endif; ?>
 						</tr>
