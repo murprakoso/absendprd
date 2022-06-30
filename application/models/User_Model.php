@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR die('No direct script access allowed');
 
-class User_Model extends CI_Model
+class User_model extends CI_Model
 {
     public function find_by($field, $value, $return = FALSE)
     {
